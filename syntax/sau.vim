@@ -47,9 +47,9 @@ syntax match sauParam "\<[adrsftpcem]\ze[0-9.(]"
 " Numbers
 " -----------------
 " Integers, floats, and basic fractions
-"
-syntax match sauNumber "\<[0-9]\+\(\.[0-9_]\+\)\?\>" 
-syntax match sauNumber "[0-9]\+\/[0-9]\+" 
+" Examples: 1 3.14 0.01 .25 1/2 -0.5 +.75
+syntax match sauNumber "[-+]\?\([0-9]\+\(\.[0-9_]\+\)\?\|\.[0-9_]\+\)\>"
+syntax match sauNumber "[-+]\?[0-9]\+\/[-+]\?[0-9]\+"
 
 " -----------------
 " Variables
