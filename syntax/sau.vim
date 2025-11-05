@@ -45,8 +45,8 @@ syntax match sauParam "\<[ftaprcem]\>"
 " -----------------
 " Integers, floats, and basic fractions
 "
-syntax match sauNumber "\<[0-9]\+\(\.[0-9_]\+\)\?\>"
-syntax match sauNumber "\<[0-9]\+\/[0-9]\+\>"
+syntax match sauNumber "\<[0-9]\+\(\.[0-9_]\+\)\?\>" 
+syntax match sauNumber "[0-9]\+\/[0-9]\+" 
 
 " -----------------
 " Variables
