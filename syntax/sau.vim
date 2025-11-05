@@ -1,0 +1,83 @@
+" Syntax highlighting for SAU (Scriptable Audio) language used by saugns
+" https://codeberg.org/sau/saugns
+
+if exists("b:current_syntax")
+  finish
+endif
+
+" -----------------
+" Comments
+" -----------------
+" SAU supported comment styles:
+"   // line comment
+"   /* block comment */
+"   #! line comment
+"   #Q line comment
+"
+syntax match  sauComment "//.*$"
+syntax region sauComment start="/\*" end="\*/"
+syntax match  sauComment "#!.*$"
+syntax match  sauComment "#Q.*$"
+
+" -----------------
+" Generators
+" -----------------
+" Main generator types:
+"   W - wave oscillator
+"   N - noise generator
+"   R - rumble / random-line oscillator
+"   A - amplitude/DC generator
+"
+syntax keyword sauGenerator W N R A
+
+" -----------------
+" Parameters / small identifiers
+" -----------------
+" This is intentionally loose: single-letter parameter "names"
+" like f (frequency), t (time), a (amplitude), p (phase),
+" r (rate), c (color), e (envelope), etc.
+"
+" Highlight them when used as standalone words.
+syntax match sauParam "\<[ftaprcem]\>"
+
+" -----------------
+" Numbers
+" -----------------
+" Integers, floats, and basic fractions
+"
+syntax match sauNumber "\<[0-9]\+\(\.[0-9_]\+\)\?\>"
+syntax match sauNumber "\<[0-9]\+\/[0-9]\+\>"
+
+" -----------------
+" Variables
+" -----------------
+" SAU uses $-prefixed variables, including "magic" ones with $~
+"   $seed
+"   $foo
+"   $~bar
+"
+syntax match sauVariable "\$[~A-Za-z_][A-Za-z0-9_]*"
+
+" -----------------
+" Labels and references
+" -----------------
+"   'label      - label
+"   @label      - reference
+"   :label      - maybe also used as a reference/control
+"
+syntax match sauLabel    "'[A-Za-z_][A-Za-z0-9_]*"
+syntax match sauLabelRef "[@:][A-Za-z_][A-Za-z0-9_]*"
+
+" -----------------
+" Highlight groups links
+" -----------------
+hi def link sauComment   Comment
+hi def link sauGenerator Keyword
+hi def link sauParam     Identifier
+hi def link sauNumber    Number
+hi def link sauVariable  Identifier
+hi def link sauLabel     Type
+hi def link sauLabelRef  Type
+
+let b:current_syntax = "sau"
+
