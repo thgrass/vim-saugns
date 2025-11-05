@@ -37,8 +37,11 @@ syntax keyword sauGenerator W N R A
 " like f (frequency), t (time), a (amplitude), p (phase),
 " r (rate), c (color), e (envelope), etc.
 "
-" Highlight them when used as standalone words.
+" Standalone parameter letters (a, d, s, f, t, p, r, c, e, m...)
 syntax match sauParam "\<[ftaprcem]\>"
+" Parameter letters when immediately followed by a number or '(',
+" e.g. a0.01, d0.1, s1/2, f440, t1, etc.
+syntax match sauParam "\<[adrsftpcem]\ze[0-9.(]"
 
 " -----------------
 " Numbers
@@ -65,8 +68,10 @@ syntax match sauVariable "\$[~A-Za-z_][A-Za-z0-9_]*"
 "   @label      - reference
 "   :label      - maybe also used as a reference/control
 "
-syntax match sauLabel    "'[A-Za-z_][A-Za-z0-9_]*"
-syntax match sauLabelRef "[@:][A-Za-z_][A-Za-z0-9_]*"
+" Labels like 'foo, 'name1, '0, 'abc_123
+syntax match sauLabel    "'[A-Za-z0-9_]\+"
+" References like @foo, @0, :name2, :bar_3
+syntax match sauLabelRef "[@:][A-Za-z0-9_]\+"
 
 " -----------------
 " Highlight groups links
