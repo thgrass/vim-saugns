@@ -38,10 +38,10 @@ syntax keyword sauGenerator W N R A
 syntax keyword sauCommand S
 
 " ----------------
-" Contants
+" Global contants
 " ----------------
 "
-" Global math constants
+" Math constants
 syntax match sauConst "\<pi\>"
 syntax match sauConst "\<mf\>"
 " Time-length constant (short default time)
@@ -71,9 +71,20 @@ syntax match sauNumber "[-+]\?\([0-9]\+\(\.[0-9_]\+\)\?\|\.[0-9_]\+\)\>"
 syntax match sauNumber "[-+]\?[0-9]\+\/[-+]\?[0-9]\+"
 
 " -----------------
+" f-context note & MIDI constants
+" -----------------
+" Note names: A..G with optional # or b, optional signed octave number (e.g. fC#4, fBb-1)
+syntax match sauFConstNote "\%(\<f\)\@<=[A-G]\%([#b]\)\?\%(-\?[0-9]\+\)\?" contains=sauOperator
+" MIDI numbers: M0..M127 (we don't enforce 0..127 in regex)
+syntax match sauFConstMidi "\%(\<f\)\@<=M[0-9]\{1,3}" contains=sauOperator
+" Also support the spaced variable-namespace form: $x = f A4  /  $x = f M69
+syntax match sauFConstNote "\%(\<f \)\@<=[A-G]\%([#b]\)\?\%(-\?[0-9]\+\)\?" contains=sauOperator
+syntax match sauFConstMidi "\%(\<f \)\@<=M[0-9]\{1,3}" contains=sauOperator
+
+" -----------------
 " Variables
 " -----------------
-" SAU uses $-prefixed variables, including "magic" ones with $~
+" $-prefixed variables, including "magic" ones with $~
 "   $seed
 "   $foo
 "   $~bar
@@ -85,7 +96,7 @@ syntax match sauVariable "\$[~A-Za-z_][A-Za-z0-9_]*"
 " -----------------
 "   'label      - label
 "   @label      - reference
-"   :label      - maybe also used as a reference/control
+"   :label      - also used 
 "
 " Labels like 'foo, 'name1, '0, 'abc_123
 syntax match sauLabel    "'[A-Za-z0-9_]\+"
@@ -113,6 +124,8 @@ hi def link sauCommand     Statement
 hi def link sauConst       Constant
 hi def link sauParam       Identifier
 hi def link sauNumber      Number
+hi def link sauFConstNote  Constant
+hi def link sauFConstMidi  Constant
 hi def link sauVariable    Identifier
 hi def link sauLabel       Type
 hi def link sauLabelRef    Type
