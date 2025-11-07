@@ -119,7 +119,7 @@ syntax match sauOperator "\.\ze[A-Za-z_]"
 syntax match sauOperator "\s\zs/\ze\s"
 
 " Timing operators: step split, delay reset, forward-shift, subshift
-syntax match sauTiming "[;|`/\\]"
+syntax match sauTiming "[;|/\\]"
 
 " -----------------
 " Highlight groups links
