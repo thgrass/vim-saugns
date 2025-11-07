@@ -69,3 +69,9 @@ git clone https://github.com/thgrass/vim-saugns.git
 ## Usage
 
 After installation works on any file with `filetype=sau`, per default any file with `.sau` extension.
+
+---
+
+## License
+
+MIT
