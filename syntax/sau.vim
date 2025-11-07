@@ -50,7 +50,7 @@ syntax match sauConst "\<T\>"
 " -----------------
 " Parameters / small identifiers
 " -----------------
-" This is intentionally loose: single-letter parameter "names"
+" This is intentionally loose: single-letter parameter names
 " like f (frequency), t (time), a (amplitude), p (phase),
 " r (rate), c (color), e (envelope), etc.
 "
@@ -116,13 +116,13 @@ syntax match sauOperator "\.\ze[A-Za-z_]"
 syntax match sauOperator "\s\zs/\ze\s"
 
 " Timing operators: step split, delay reset, forward-shift, subshift
-syntax match sauTiming "[;|/\\]"
+syntax match sauTiming "[;|`/\\]"
 
 " -----------------
 " Highlight groups links
 " -----------------
 hi def link sauComment	   Comment
-hi def link sauGenerator   Statement
+hi def link sauGenerator   Identifier
 hi def link sauCommand     Keyword
 hi def link sauConst       Constant
 hi def link sauParam       Identifier
