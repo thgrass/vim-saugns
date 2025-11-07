@@ -10,7 +10,7 @@ This plugin provides filetype detection and highlighting for `.sau` scripts — 
 
 Using 'Dracula' theme in vim (terminal) with one of the example source files from the saugns project:
 
-<img alt="SAU syntax example" src="sau_dracula.png" />
+<img alt="SAU syntax example" src="https://github.com/thgrass/vim-saugns/releases/download/v0.1.0/sau_dracula.png" />
 
 ---
 
