@@ -125,7 +125,8 @@ syntax match sauTiming "[;|`/\\]"
 " Highlight groups links
 " -----------------
 hi def link sauComment	   Comment
-hi def link sauGenerator   Identifier
+hi def link sauGenerator   Keyword
+hi def link sauGenType     Type
 hi def link sauCommand     Keyword
 hi def link sauConst       Constant
 hi def link sauParam       Identifier
