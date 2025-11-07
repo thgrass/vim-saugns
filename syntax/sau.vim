@@ -31,6 +31,23 @@ syntax match  sauComment "#Q.*$"
 syntax keyword sauGenerator W N R A
 
 " -----------------
+" Capital single-letter commands
+" -----------------
+"  S - sound start command
+"  
+syntax keyword sauCommand S
+
+" ----------------
+" Contants
+" ----------------
+"
+" Global math constants
+syntax match sauConst "\<pi\>"
+syntax match sauConst "\<mf\>"
+" Time-length constant (short default time)
+syntax match sauConst "\<T\>"
+
+" -----------------
 " Parameters / small identifiers
 " -----------------
 " This is intentionally loose: single-letter parameter "names"
@@ -38,6 +55,7 @@ syntax keyword sauGenerator W N R A
 " r (rate), c (color), e (envelope), etc.
 "
 " Standalone parameter letters (a, d, s, f, t, p, r, c, e, m...)
+"
 syntax match sauParam "\<[ftaprcem]\>"
 " Parameter letters when immediately followed by a number or '(',
 " e.g. a0.01, d0.1, s1/2, f440, t1, etc.
@@ -48,6 +66,7 @@ syntax match sauParam "\<[adrsftpcem]\ze[0-9.(]"
 " -----------------
 " Integers, floats, and basic fractions
 " Examples: 1 3.14 0.01 .25 1/2 -0.5 +.75
+"
 syntax match sauNumber "[-+]\?\([0-9]\+\(\.[0-9_]\+\)\?\|\.[0-9_]\+\)\>"
 syntax match sauNumber "[-+]\?[0-9]\+\/[-+]\?[0-9]\+"
 
@@ -88,14 +107,15 @@ syntax match sauOperator "\s\zs/\ze\s"
 " -----------------
 " Highlight groups links
 " -----------------
-hi def link sauComment   Comment
-hi def link sauGenerator Keyword
-hi def link sauParam     Identifier
-hi def link sauNumber    Number
-hi def link sauVariable  Identifier
-hi def link sauLabel     Type
-hi def link sauLabelRef  Type
-hi def link sauOperator  Operator
+hi def link sauComment	   Comment
+hi def link sauGenerator   Keyword
+hi def link sauCommand     Statement
+hi def link sauConst       Constant
+hi def link sauParam       Identifier
+hi def link sauNumber      Number
+hi def link sauVariable    Identifier
+hi def link sauLabel       Type
+hi def link sauLabelRef    Type
+hi def link sauOperator    Operator
 
 let b:current_syntax = "sau"
-
