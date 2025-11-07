@@ -28,7 +28,10 @@ syntax match  sauComment "#Q.*$"
 "   R - rumble / random-line oscillator
 "   A - amplitude/DC generator
 "
-syntax keyword sauGenerator W N R A
+syntax match sauGenerator "\<[ANRW]\>"                " standalone A/N/R/W
+syntax match sauGenerator "\<[ANRW]\ze[a-z\[]"        " before type (sin,saw,smo,...) or '['
+" highlight the generator's type token after W/R (e.g. 'sin', 'smo')
+syntax match sauGenType "\%(\<[WR]\)\@<=[a-z][a-z0-9_]*"
 
 " -----------------
 " Capital single-letter commands
