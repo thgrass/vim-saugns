@@ -74,6 +74,18 @@ syntax match sauLabel    "'[A-Za-z0-9_]\+"
 syntax match sauLabelRef "[@:][A-Za-z0-9_]\+"
 
 " -----------------
+" Operators & punctuation
+" -----------------
+" Basic arithmetic / punctuation
+syntax match sauOperator "[-+*%^(),\[\]=]"
+
+" Dot before a sub-parameter token (e.g. .l, .llin), but NOT a decimal point
+syntax match sauOperator "\.\ze[A-Za-z_]"
+
+" Slash as an operator only when surrounded by spaces (avoid // comments & 1/2)
+syntax match sauOperator "\s\zs/\ze\s"
+
+" -----------------
 " Highlight groups links
 " -----------------
 hi def link sauComment   Comment
@@ -83,6 +95,7 @@ hi def link sauNumber    Number
 hi def link sauVariable  Identifier
 hi def link sauLabel     Type
 hi def link sauLabelRef  Type
+hi def link sauOperator  Operator
 
 let b:current_syntax = "sau"
 
