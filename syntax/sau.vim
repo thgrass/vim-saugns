@@ -122,8 +122,8 @@ syntax match sauTiming "[;|/\\]"
 " Highlight groups links
 " -----------------
 hi def link sauComment	   Comment
-hi def link sauGenerator   Keyword
-hi def link sauCommand     Statement
+hi def link sauGenerator   Statement
+hi def link sauCommand     Keyword
 hi def link sauConst       Constant
 hi def link sauParam       Identifier
 hi def link sauNumber      Number
@@ -133,6 +133,6 @@ hi def link sauVariable    Identifier
 hi def link sauLabel       Type
 hi def link sauLabelRef    Type
 hi def link sauOperator    Operator
-hi def link sauTiming Operator
+hi def link sauTiming      Operator
 
 let b:current_syntax = "sau"
