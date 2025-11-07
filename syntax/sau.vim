@@ -115,6 +115,9 @@ syntax match sauOperator "\.\ze[A-Za-z_]"
 " Slash as an operator only when surrounded by spaces (avoid // comments & 1/2)
 syntax match sauOperator "\s\zs/\ze\s"
 
+" Timing operators: step split, delay reset, forward-shift, subshift
+syntax match sauTiming "[;|/\\]"
+
 " -----------------
 " Highlight groups links
 " -----------------
@@ -130,5 +133,6 @@ hi def link sauVariable    Identifier
 hi def link sauLabel       Type
 hi def link sauLabelRef    Type
 hi def link sauOperator    Operator
+hi def link sauTiming Operator
 
 let b:current_syntax = "sau"
